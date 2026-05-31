@@ -1,0 +1,55 @@
+{
+  "description": "Labeled evaluation set. For each question we record the document that SHOULD be retrieved (relevant_source) and a few keywords a correct answer should contain (answer_keywords). Used to measure retrieval accuracy (Hit@k, MRR) and answer grounding.",
+  "cases": [
+    {
+      "question": "What is cosine similarity and what does a value of 1 mean?",
+      "relevant_source": "02_vector_databases.md",
+      "answer_keywords": ["angle", "direction", "1"]
+    },
+    {
+      "question": "How does LoRA reduce the cost of fine-tuning large models?",
+      "relevant_source": "04_llm_finetuning.md",
+      "answer_keywords": ["low-rank", "freezes", "memory"]
+    },
+    {
+      "question": "What does the controller inside an SSD do?",
+      "relevant_source": "03_nand_storage.md",
+      "answer_keywords": ["wear leveling", "error correction", "garbage collection"]
+    },
+    {
+      "question": "What are the stages of a traditional RAG pipeline?",
+      "relevant_source": "01_rag_fundamentals.md",
+      "answer_keywords": ["chunk", "embedding", "retrieval", "generation"]
+    },
+    {
+      "question": "What are the core components of an AI agent?",
+      "relevant_source": "05_agentic_ai.md",
+      "answer_keywords": ["tools", "memory", "model", "loop"]
+    },
+    {
+      "question": "What is the difference between SLC and QLC NAND cells?",
+      "relevant_source": "03_nand_storage.md",
+      "answer_keywords": ["bits", "density", "endurance"]
+    },
+    {
+      "question": "When should I use RAG instead of fine-tuning?",
+      "relevant_source": "04_llm_finetuning.md",
+      "answer_keywords": ["facts", "knowledge", "behave"]
+    },
+    {
+      "question": "Why might a large k in top-k retrieval hurt the answer?",
+      "relevant_source": "02_vector_databases.md",
+      "answer_keywords": ["noise", "context", "window"]
+    },
+    {
+      "question": "What is reflection or self-correction in an agentic system?",
+      "relevant_source": "05_agentic_ai.md",
+      "answer_keywords": ["critique", "improve", "again"]
+    },
+    {
+      "question": "Why is chunk overlap useful when splitting documents?",
+      "relevant_source": "01_rag_fundamentals.md",
+      "answer_keywords": ["boundary", "lost", "overlap"]
+    }
+  ]
+}
