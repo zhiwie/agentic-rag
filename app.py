@@ -11,15 +11,21 @@ the agent's step-by-step trace so the audience can SEE the agentic behaviour.
 """
 
 import os
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 import streamlit as st
-from openai import OpenAI
+# from openai import OpenAI
 
-client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
+# client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 # Load .env file so OPENAI_API_KEY is set automatically on every run.
 # load_dotenv()
 
 # api_key = st.secrets["OPENAI_API_KEY"]
+# Set the key in the environment BEFORE any OpenAI client is instantiated
+api_key = st.secrets.get("OPENAI_API_KEY") or os.environ.get("OPENAI_API_KEY")
+if api_key:
+    os.environ["OPENAI_API_KEY"] = api_key
+
+from openai import OpenAI
 
 from src import config
 from src.ingest import build_vector_store
@@ -33,9 +39,12 @@ st.set_page_config(page_title="Agentic RAG", page_icon="🔎", layout="wide")
 @st.cache_resource
 def load_system():
     """Create the LLM, embedder, and vector store. Cached across reruns."""
-    if os.environ.get("OPENAI_API_KEY"):
-        chat = OpenAIChat()
-        embedder = OpenAIEmbedder()
+    # if os.environ.get("OPENAI_API_KEY"):
+    api_key = st.secrets.get("OPENAI_API_KEY") or os.environ.get("OPENAI_API_KEY")
+    
+    if api_key:
+        chat = OpenAIChat(api_key=api_key)
+        embedder = OpenAIEmbedder(api_key=api_key)
         mode = "OpenAI (live)"
     else:
         # Offline fallback so the UI still loads without a key.
