@@ -16,6 +16,7 @@ import streamlit as st
 
 # Load .env file so OPENAI_API_KEY is set automatically on every run.
 load_dotenv()
+api_key = st.secrets["OPENAI_API_KEY"]
 
 from src import config
 from src.ingest import build_vector_store
