@@ -13,10 +13,13 @@ the agent's step-by-step trace so the audience can SEE the agentic behaviour.
 import os
 from dotenv import load_dotenv
 import streamlit as st
+from openai import OpenAI
 
+client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 # Load .env file so OPENAI_API_KEY is set automatically on every run.
-load_dotenv()
-api_key = st.secrets["OPENAI_API_KEY"]
+# load_dotenv()
+
+# api_key = st.secrets["OPENAI_API_KEY"]
 
 from src import config
 from src.ingest import build_vector_store
