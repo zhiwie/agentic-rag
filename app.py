@@ -43,8 +43,9 @@ def load_system():
     api_key = st.secrets.get("OPENAI_API_KEY") or os.environ.get("OPENAI_API_KEY")
     
     if api_key:
-        chat = OpenAIChat(api_key=api_key)
-        embedder = OpenAIEmbedder(api_key=api_key)
+        os.environ["OPENAI_API_KEY"] = api_key
+        chat = OpenAIChat()
+        embedder = OpenAIEmbedder()
         mode = "OpenAI (live)"
     else:
         # Offline fallback so the UI still loads without a key.
